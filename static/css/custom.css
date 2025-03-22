@@ -1,0 +1,1271 @@
+:root {
+  --base-color: #000000 !important;  /* Full Black */
+  --base-offset-color: #141414 !important;  /* Keeps slight contrast for sections */
+  --highlight-color: #ED2939 !important;  /* Vibrant Red */
+  --heading-color: #EAEAEA !important;  /* Soft White */
+  --text-color: #BBBBBB !important;  /* Light Gray for better readability */
+  --dot-color: #ED2939 !important;  /* Matches Highlight */
+  --code-bg: #121212 !important;  /* Darker Code Background for contrast */
+}
+
+
+
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  background: var(--base-color) !important;
+  color: var(--text-color) !important;
+  padding: 0 !important;
+}
+
+::selection {
+  background: #ED2939 !important; /* Same highlight color */
+  color: #F5F5F5 !important; /* Slightly softer white for readability */
+}
+
+::-moz-selection {
+  background: #ED2939 !important;
+  color: #F5F5F5 !important;
+}
+
+/* Improved text contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color) !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Commented out frame border - was too decorative */
+/* body.frame {
+  border-color: #2ECC71 !important;
+} */
+
+a {
+  color: var(--highlight-color) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+a:hover {
+  color: #ff6773 !important; /* A brighter alternative */
+  text-decoration: underline !important;
+}
+
+/* Override all body and wrapper padding */
+body, 
+.page,
+.page-home {
+    padding: 0 !important;
+}
+
+/* Only modify padding to keep bottom at 0 while preserving others */
+.wrapper,
+#wrapper,
+div[id="wrapper"] {
+    padding: 100px 50px 0 50px !important; /* Restore top and side padding */
+    margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+    .wrapper,
+    #wrapper,
+    div[id="wrapper"] {
+        padding: 100px 20px 0 20px !important; /* Mobile side padding */
+    }
+}
+
+/* Restore table of contents behavior */
+.content.with-toc {
+    padding-right: 300px !important; /* Space for TOC */
+}
+
+@media (max-width: 768px) {
+    .content.with-toc {
+        padding-right: 20px !important; /* Mobile spacing */
+    }
+}
+
+/* Remove any bottom spacing */
+.content,
+.intro,
+.author-large {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Code block styles */
+.code-block-wrapper {
+  position: relative !important;
+  background: var(--base-color) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(237, 41, 57, 0.3) !important;
+  margin: 25px 0 !important;
+  overflow: hidden !important;
+  padding: 0px !important;
+}
+
+.code-block-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 45px !important;
+  background: #0d0d0d !important;
+  border-bottom: 1px solid rgba(237, 41, 57, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 20px !important;
+  z-index: 10 !important;
+}
+
+.header-center {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.code-block-content {
+  padding-top: 45px !important;
+  overflow: auto !important;
+}
+
+.code-block-content pre {
+  margin: 0 !important;
+  padding: 20px 25px !important;
+  background: transparent !important;
+  min-width: fit-content !important;
+}
+
+.code-block-content pre code {
+  display: block !important;
+  line-height: 1.6 !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  margin-left: 3.5em !important;
+  position: relative !important;
+}
+
+.code-block-content pre code::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -1.5em !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 1px !important;
+  background: #333 !important;
+}
+
+.code-block-content pre code > span {
+  counter-increment: line !important;
+  display: block !important;
+  position: relative !important;
+  white-space: pre !important;
+  min-height: 1.6em !important;
+}
+
+.code-block-content pre code > span::before {
+  content: counter(line) !important;
+  position: absolute !important;
+  right: calc(100% + 2em) !important;
+  width: 1.5em !important;
+  text-align: right !important;
+  color: #888 !important; /* Slightly brighter for better contrast */
+}
+
+.lang-label {
+  color: #AAAAAA !important; /* Matches text color for consistency */
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.mac-dots {
+  display: flex !important;
+  gap: 6px !important;
+  align-items: center !important;
+}
+
+.dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
+
+.dot-red {
+  background: var(--highlight-color) !important;
+  opacity: 0.8 !important; /* Slightly more visible */
+}
+
+.dot-yellow,
+.dot-green {
+  background: #888 !important; /* Better contrast */
+  opacity: 0.8 !important;
+}
+
+.header-buttons {
+  display: flex !important;
+  gap: 10px !important;
+  z-index: 1 !important;
+}
+
+.header-buttons button {
+  width: 30px !important;
+  height: 30px !important;
+  background: transparent !important;
+  border: 1px solid rgba(237, 41, 57, 0.3) !important; /* Slightly more visible */
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  color: #AAAAAA !important; /* Matches text color for consistency */
+  padding: 0 !important;
+}
+
+.header-buttons button:hover {
+  border-color: var(--highlight-color) !important;
+  color: var(--highlight-color) !important;
+}
+
+/* Copy button animations */
+@keyframes pulse {
+  0% { transform: scale(1) !important; }
+  50% { transform: scale(1.1) !important; }
+  100% { transform: scale(1) !important; }
+}
+
+.header-buttons .copy-button .check-icon {
+  display: none !important;
+}
+
+.header-buttons .copy-button.copied .copy-icon {
+  display: none !important;
+}
+
+.header-buttons .copy-button.copied .check-icon {
+  display: block !important;
+  color: #98C379 !important;
+}
+
+.header-buttons .copy-button.copied {
+  border-color: #98C379 !important;
+  animation: pulse 0.5s ease-in-out !important;
+}
+
+/* Fix button positioning */
+.header-buttons .zoom-button {
+  order: 1 !important;
+}
+
+.header-buttons .copy-button {
+  order: 2 !important;
+}
+
+/* Lightbox styles */
+.code-lightbox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+  z-index: 9999 !important;
+}
+
+.code-lightbox.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.code-lightbox .code-block-wrapper {
+  width: 90vw !important;
+  max-width: 1200px !important;
+  height: 85vh !important;
+  margin: 50px auto !important;
+}
+
+.code-lightbox .code-block-content {
+  height: calc(85vh - 45px) !important;
+  overflow: auto !important;
+}
+
+@media (max-width: 480px) {
+  .code-lightbox .code-block-wrapper {
+    width: 95vw !important;
+    height: 80vh !important;
+    margin: 80px auto 0 !important;
+  }
+
+  .code-lightbox-content .header-buttons .copy-button {
+    right: 15px !important;
+  }
+
+  .code-lightbox-close {
+    top: 10px !important;
+    right: 10px !important;
+  }
+}
+
+.code-lightbox-close {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--highlight-color) !important;
+  font-size: 40px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+  z-index: 10000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.code-lightbox-close:hover {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+/* Additional dark theme enhancements */
+.main-menu {
+  background-color: var(--base-color) !important;
+}
+
+.pagination {
+  margin: 20px 0 !important;
+}
+
+.pagination-link {
+  color: #ffffff !important;
+}
+
+.intro img {
+  border-radius: 12px !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 20px 0 !important;
+  box-shadow: 
+    0 0 10px rgba(237, 41, 57, 0.1),
+    0 0 20px rgba(237, 41, 57, 0.08),
+    0 0 30px rgba(237, 41, 57, 0.06),
+    0 0 40px rgba(237, 41, 57, 0.04),
+    0 0 50px rgba(237, 41, 57, 0.02),
+    0 10px 20px rgba(0, 0, 0, 0.4) !important;
+  filter: contrast(1.02) !important;
+}
+
+.image-wrapper {
+  cursor: pointer !important;
+}
+
+.intro img.zoomable {
+  border-radius: 12px !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 20px 0 !important;
+  box-shadow: 
+    0 0 10px rgba(237, 41, 57, 0.1),
+    0 0 20px rgba(237, 41, 57, 0.08),
+    0 0 30px rgba(237, 41, 57, 0.06),
+    0 0 40px rgba(237, 41, 57, 0.04),
+    0 0 50px rgba(237, 41, 57, 0.02),
+    0 10px 20px rgba(0, 0, 0, 0.4) !important;
+  filter: contrast(1.02) !important;
+  transition: filter 0.3s ease !important;
+}
+
+.image-wrapper:hover .zoomable {
+  filter: contrast(1.02) brightness(1.1) !important;
+}
+
+.lightbox {
+  display: flex !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0) !important;
+  backdrop-filter: blur(0px) !important;
+  z-index: 1000 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer !important;
+}
+
+.lightbox.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.lightbox-close {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--highlight-color) !important;
+  font-size: 40px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+  z-index: 1002 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.lightbox.active .lightbox-close {
+  transform: scale(1) rotate(0) !important;
+}
+
+.lightbox-close:hover {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+  color: #ff1616 !important;
+}
+
+.lightbox-content {
+  position: relative !important;
+  width: 90vw !important;
+  height: 90vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transform: scale(0.5) !important;
+  opacity: 0 !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.lightbox.active .lightbox-content {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+
+.lightbox-content img {
+  max-width: 85vw !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: 85vh !important;
+  object-fit: contain !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 50px rgba(237, 41, 57, 0.15) !important;
+  pointer-events: none !important;
+  transform: scale(1.1) !important;
+}
+
+.content {
+  /* Syntax highlighting */
+  .highlight {
+    background: transparent !important;
+  }
+
+  .highlight pre, .highlight code {
+    background: transparent !important;
+  }
+
+  .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { 
+    color: var(--highlight-color) !important;
+  }
+  .highlight .s, .highlight .s1, .highlight .s2 { 
+    color: #98C379 !important;
+  }
+  .highlight .na, .highlight .nb, .highlight .nc, .highlight .nd, .highlight .ne, .highlight .nf { 
+    color: #61AFEF !important;
+  }
+  .highlight .c, .highlight .c1, .highlight .cm, .highlight .cp, .highlight .cs { 
+    color: #666666 !important;
+  }
+  .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo { 
+    color: #d19a66 !important;
+  }
+  .highlight .o, .highlight .ow { 
+    color: #56b6c2 !important;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .code-lightbox-content .code-container {
+      padding: 40px 15px 15px !important;
+    }
+
+    .code-lightbox-content .code-container pre {
+      padding: 10px !important;
+      font-size: 14px !important;
+    }
+
+    .code-lightbox-content .code-container pre code {
+      margin-left: 2.5em !important;
+    }
+
+    .code-lightbox-content .code-container pre code > span::before {
+      right: calc(100% + 1em) !important;
+      width: 1.2em !important;
+    }
+
+    .code-lightbox-content {
+      width: 95vw !important;
+      height: 95vh !important;
+    }
+
+    .code-lightbox-content pre {
+      font-size: 14px !important;
+    }
+
+    .code-lightbox-content .header-buttons .copy-button {
+      right: 60px !important;  /* Move copy button away from close button */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .code-lightbox-content {
+      width: 95vw !important;
+      height: 85vh !important;
+      margin: 30px auto !important;
+    }
+
+    .code-lightbox-content .header-buttons .copy-button {
+      right: 15px !important;  /* Align with edge */
+    }
+
+    .code-lightbox-close {
+      top: 10px !important;
+      right: 10px !important;
+    }
+  }
+
+  /* Style scrollbars */
+  .code-lightbox-content pre::-webkit-scrollbar {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .code-lightbox-content pre::-webkit-scrollbar-track {
+    background: #0d0d0d !important;
+    border-radius: 6px !important;
+  }
+
+  .code-lightbox-content pre::-webkit-scrollbar-thumb {
+    background: #333 !important;
+    border-radius: 6px !important;
+    border: 3px solid #0d0d0d !important;
+  }
+
+  .code-lightbox-content pre::-webkit-scrollbar-thumb:hover {
+    background: #444 !important;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .code-lightbox-content {
+      width: 95vw !important;
+      height: 95vh !important;
+    }
+
+    .code-lightbox-content pre {
+      font-size: 14px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .code-lightbox-content {
+      width: 100vw !important;
+      height: 100vh !important;
+      border-radius: 0 !important;
+    }
+
+    .code-lightbox-content pre {
+      font-size: 13px !important;
+      padding: 15px !important;
+    }
+
+    .code-lightbox-close {
+      top: 10px !important;
+      right: 10px !important;
+    }
+  }
+
+  .code-lightbox.active .code-lightbox-content {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Make sure lightbox inherits syntax highlighting */
+.code-lightbox-content .code-container {
+  .highlight {
+    background: transparent !important;
+  }
+
+  .highlight pre, .highlight code {
+    background: transparent !important;
+  }
+
+  .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { 
+    color: var(--highlight-color) !important;
+  }
+  .highlight .s, .highlight .s1, .highlight .s2 { 
+    color: #98C379 !important;
+  }
+  .highlight .na, .highlight .nb, .highlight .nc, .highlight .nd, .highlight .ne, .highlight .nf { 
+    color: #61AFEF !important;
+  }
+  .highlight .c, .highlight .c1, .highlight .cm, .highlight .cp, .highlight .cs { 
+    color: #666666 !important;
+  }
+  .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo { 
+    color: #d19a66 !important;
+  }
+  .highlight .o, .highlight .ow { 
+    color: #56b6c2 !important;
+  }
+}
+
+/* Syntax highlighting for lightbox */
+.code-lightbox .code-block-wrapper .highlight {
+  background: transparent !important;
+}
+
+.code-lightbox .code-block-wrapper .k,
+.code-lightbox .code-block-wrapper .kd,
+.code-lightbox .code-block-wrapper .kn,
+.code-lightbox .code-block-wrapper .kp,
+.code-lightbox .code-block-wrapper .kr,
+.code-lightbox .code-block-wrapper .kt {
+  color: var(--highlight-color) !important;
+}
+
+.code-lightbox .code-block-wrapper .s,
+.code-lightbox .code-block-wrapper .s1,
+.code-lightbox .code-block-wrapper .s2 {
+  color: #98C379 !important;
+}
+
+.code-lightbox .code-block-wrapper .na,
+.code-lightbox .code-block-wrapper .nb,
+.code-lightbox .code-block-wrapper .nc,
+.code-lightbox .code-block-wrapper .nd,
+.code-lightbox .code-block-wrapper .ne,
+.code-lightbox .code-block-wrapper .nf {
+  color: #61AFEF !important;
+}
+
+.code-lightbox .code-block-wrapper .c,
+.code-lightbox .code-block-wrapper .c1,
+.code-lightbox .code-block-wrapper .cm,
+.code-lightbox .code-block-wrapper .cp,
+.code-lightbox .code-block-wrapper .cs {
+  color: #666666 !important;
+}
+
+.code-lightbox .code-block-wrapper .m,
+.code-lightbox .code-block-wrapper .mf,
+.code-lightbox .code-block-wrapper .mh,
+.code-lightbox .code-block-wrapper .mi,
+.code-lightbox .code-block-wrapper .mo {
+  color: #d19a66 !important;
+}
+
+.code-lightbox .code-block-wrapper .o,
+.code-lightbox .code-block-wrapper .ow {
+  color: #56b6c2 !important;
+}
+
+/* Function calls and variables */
+.code-lightbox .code-block-wrapper .nx {
+  color: #61AFEF !important;
+}
+
+/* jQuery selectors and strings */
+.code-lightbox .code-block-wrapper .s2 {
+  color: #98C379 !important;
+}
+
+/* Comments */
+.code-lightbox .code-block-wrapper .c1 {
+  color: #666666 !important;
+  font-style: italic !important;
+}
+
+/* Function declarations */
+.code-lightbox .code-block-wrapper .kd {
+  color: var(--highlight-color) !important;
+}
+
+/* Variables */
+.code-lightbox .code-block-wrapper .nx {
+  color: #e06c75 !important;
+}
+
+/* jQuery $ */
+.code-lightbox .code-block-wrapper .nx:first-child {
+  color: #61AFEF !important;
+}
+
+/* Bullet points styling */
+.content ul,
+.content ol {
+  margin-left: 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 20px !important;
+}
+
+.content ul li,
+.content ol li {
+  font-size: 18px !important;
+  line-height: 20px !important;
+  margin-bottom: 10px !important;
+  margin-left: 20px !important;
+}
+
+@media (max-width: 767px) {
+  .content ul,
+  .content ol {
+    margin-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .content ul li,
+  .content ol li {
+    margin-left: 15px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+.readtime-container {
+  padding-bottom: 25px !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+.readtime-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: transparent !important;
+  border: 1px solid #333 !important;
+  border-radius: 4px !important;
+  padding: 4px 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.readtime-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  color: #666 !important;
+}
+
+.readtime-icon {
+  color: #666 !important;
+  opacity: 0.8 !important;
+}
+
+.readtime-text {
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+.readtime-badge:hover {
+  border-color: var(--highlight-color) !important;
+}
+
+.readtime-badge:hover .readtime-content,
+.readtime-badge:hover .readtime-icon {
+  color: var(--highlight-color) !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .readtime-container {
+    padding-bottom: 20px !important;
+  }
+  
+  .readtime-badge {
+    padding: 3px 8px !important;
+  }
+  
+  .readtime-text {
+    font-size: 11px !important;
+  }
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  color: var(--highlight-color) !important;
+  position: relative !important;
+  display: inline-block !important;
+  padding-bottom: 5px !important;
+  padding-left: 25px !important; /* Make space for the terminal icon */
+  margin-left: -25px !important; /* Offset the padding to maintain alignment */
+}
+
+.content h1::after,
+.content h2::after,
+.content h3::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(
+    90deg,
+    var(--highlight-color),
+    #ff4444,
+    var(--highlight-color)
+  ) !important;
+  transition: width 0.3s ease !important;
+  box-shadow: 0 0 8px var(--highlight-color) !important;
+}
+
+/* Only prevent underline animation on active headings */
+.content h1:not(.hover-active):hover::after,
+.content h2:not(.hover-active):hover::after,
+.content h3:not(.hover-active):hover::after {
+  width: 100% !important;
+  animation: scanline 2s ease-in-out infinite !important;
+}
+
+/* Always apply neon effect on hover */
+.content h1:hover,
+.content h2:hover,
+.content h3:hover {
+  text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+  animation: textGlitch 3s infinite !important;
+}
+
+@keyframes scanline {
+  0% {
+    background-position: -100% 0 !important;
+    box-shadow: 0 0 8px var(--highlight-color) !important;
+  }
+  50% {
+    box-shadow: 0 0 15px var(--highlight-color),
+                0 0 25px var(--highlight-color) !important;
+  }
+  100% {
+    background-position: 200% 0 !important;
+    box-shadow: 0 0 8px var(--highlight-color) !important;
+  }
+}
+
+@keyframes textGlitch {
+  0% {
+    text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+    transform: translate(0) !important;
+  }
+  98% {
+    text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+    transform: translate(0) !important;
+  }
+  99% {
+    text-shadow: -2px 0 #ff0000, 2px 2px #00ff00 !important;
+    transform: translate(2px, -2px) !important;
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+    transform: translate(0) !important;
+  }
+}
+
+/* css for headings in intro and summary sections */
+.intro h1,
+.intro h2,
+.summary h1,
+.summary h2 {
+  color: var(--heading-color) !important;
+}
+
+/* Heading anchor links */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  position: relative !important;
+  scroll-margin-top: 100px !important;
+}
+
+.heading-anchor {
+  position: absolute !important;
+  left: -1.5em !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  opacity: 0 !important;
+  padding-right: 4px !important;
+  color: var(--highlight-color) !important;
+  text-decoration: none !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.heading-anchor svg {
+  vertical-align: middle !important;
+  filter: drop-shadow(0 0 2px var(--highlight-color)) !important;
+  animation: neonPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes neonPulse {
+  0% {
+    filter: drop-shadow(0 0 2px var(--highlight-color)) 
+            drop-shadow(0 0 4px var(--highlight-color)) !important;
+    opacity: 0.8 !important;
+  }
+  50% {
+    filter: drop-shadow(0 0 4px var(--highlight-color))
+            drop-shadow(0 0 8px var(--highlight-color))
+            drop-shadow(0 0 12px var(--highlight-color)) !important;
+    opacity: 1 !important;
+  }
+  100% {
+    filter: drop-shadow(0 0 2px var(--highlight-color))
+            drop-shadow(0 0 4px var(--highlight-color)) !important;
+    opacity: 0.8 !important;
+  }
+}
+
+.content h1:hover .heading-anchor,
+.content h2:hover .heading-anchor,
+.content h3:hover .heading-anchor,
+.content h4:hover .heading-anchor,
+.content h5:hover .heading-anchor,
+.content h6:hover .heading-anchor,
+.heading-anchor:hover {
+  opacity: 1 !important;
+  text-decoration: none !important;
+}
+
+.heading-anchor:hover svg {
+  animation: neonPulseIntense 1s ease-in-out infinite !important;
+}
+
+@keyframes neonPulseIntense {
+  0% {
+    filter: drop-shadow(0 0 2px var(--highlight-color))
+            drop-shadow(0 0 4px var(--highlight-color)) !important;
+  }
+  50% {
+    filter: drop-shadow(0 0 4px var(--highlight-color))
+            drop-shadow(0 0 8px var(--highlight-color))
+            drop-shadow(0 0 12px var(--highlight-color))
+            drop-shadow(0 0 16px var(--highlight-color)) !important;
+  }
+  100% {
+    filter: drop-shadow(0 0 2px var(--highlight-color))
+            drop-shadow(0 0 4px var(--highlight-color)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading-anchor {
+    position: relative !important;
+    left: 0 !important;
+    margin-right: 4px !important;
+    opacity: 0.5 !important;
+  }
+}
+
+/* Blog post image styles */
+.content p img {
+  border-radius: 12px !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 20px 0 8px !important;
+  cursor: pointer !important;
+  box-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(0, 0, 0, 0.15),
+    0 0 30px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.25) !important;
+  filter: contrast(1.02) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Image caption styles */
+.content p img + a,
+.content p img + em {
+  display: block !important;
+  text-align: center !important;
+  color: #666666 !important;
+  font-size: 0.9em !important;
+  margin-top: 8px !important;
+  margin-bottom: 20px !important;
+  font-style: italic !important;
+  text-decoration: none !important;
+}
+
+.content p img + a:hover {
+  color: var(--highlight-color) !important;
+  text-decoration: none !important;
+}
+
+/* Lightbox container */
+.lightbox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+  z-index: 9999 !important;
+}
+
+/* Read More Button - Blog Home Page */
+/* ############################################# */
+.read-posts-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  padding: 5px 0;
+}
+
+/* Custom Underline Effect */
+.read-posts-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Animate Underline on Hover */
+.read-posts-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Icon Styling */
+.read-posts .material-icons {
+  font-size: 1.8rem;
+  margin-left: 5px; /* Reduce space between text & icon */
+  position: relative;
+  top: 2px; /* Adjust vertical alignment */
+  background: linear-gradient(45deg, #ff0080, #ff8c00, #ff2600, #ff00ff, #00ff9d, #22c1c3, #007bff);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s infinite ease-in-out; /* Slower gradient */
+  transition: transform 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+}
+
+/* Icon Hover Effect */
+.read-posts-link:hover + .material-icons {
+  transform: translateX(2px) translateY(-2px);
+  margin-left: 8px;
+}
+
+/* Slower Gradient Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 75%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 25%; }
+  100% { background-position: 0% 50%; }
+}
+/* ############################################# */
+
+
+
+/* Ensure tooltips stay visible */
+.cyber-tooltip {
+    overflow: visible !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+}
+
+/* Reset wrapper to original state and fix overflow */
+.wrapper {
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 100px 50px 0 50px !important; /* Keep top/sides, no bottom */
+    position: relative !important; /* Create new stacking context */
+    overflow: visible !important; /* Allow content to overflow for tooltips */
+}
+
+/* Fix wrapper responsiveness */
+.wrapper {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 100px 50px 0 50px !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+    /* word-wrap: break-word !important; */
+    /* word-break: break-word !important; */
+     /* Prevents overflow on mobile */
+    hyphens: auto !important;
+}
+
+/* Ensure content stays within bounds */
+.content {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+}
+
+/* Code block responsiveness */
+pre, code {
+    /* white-space: pre-wrap !important; */
+    /* word-wrap: break-word !important; */
+    max-width: 100% !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 100px 20px 0 20px !important;
+    }
+    
+    pre, code {
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 100px 15px 0 15px !important;
+    }
+    
+    pre, code {
+        font-size: 13px !important;
+    }
+}
+
+/* Fix content area */
+.content {
+
+    overflow: visible !important; /* Allow tooltips to be visible */
+}
+
+/* Ensure tooltips and terminal icons are always visible */
+.cyber-tooltip,
+.content h1::before,
+.content h2::before,
+.content h3::before {
+    z-index: 100 !important; /* Higher than content but lower than header */
+}
+
+/* Ensure headings can show their decorations */
+.content h1,
+.content h2,
+.content h3 {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* Ensure header stays on top */
+.header {
+    z-index: 1000 !important;
+}
+
+/* Fix title word wrapping */
+.content h1,
+.content h2,
+.content h3,
+.post-title,
+.intro h1,
+.summary h1 {
+    hyphens: manual !important; /* Disable automatic hyphenation */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important; /* Prevent breaking within words */
+    -webkit-hyphens: manual !important;
+    -ms-hyphens: manual !important;
+    white-space: normal !important;
+}
+
+/* Ensure proper width for containers */
+.content,
+.intro,
+.summary {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+}
+
+/* Fix word wrapping for all text content */
+.content p,
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+.post-title,
+.intro h1,
+.intro p,
+.summary h1,
+.summary p {
+    hyphens: manual !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    -webkit-hyphens: manual !important;
+    -ms-hyphens: manual !important;
+    white-space: normal !important;
+}
+
+/* Add specific styles for paragraphs */
+.content p {
+    max-width: 100% !important;
+    display: block !important;
+}
+

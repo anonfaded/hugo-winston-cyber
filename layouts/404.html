@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="container pt-4 pb-16">
+  <h1>404 - Page Not Found</h1>
+  {{ if and (eq .RelPermalink "/about/") (not .Site.Params.showAboutPage) }}
+    <p>The About page has been disabled by the site administrator.</p>
+  {{ else }}
+    <p>The page you are looking for does not exist or has been moved.</p>
+  {{ end }}
+  <p><a href="/">Go Home</a></p>
+</div>
+{{ end }}

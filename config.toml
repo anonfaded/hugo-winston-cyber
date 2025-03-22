@@ -1,0 +1,80 @@
+baseURL = "https://fadedhood.github.io/"
+languageCode = "en-us"
+theme = "hugo-winston-theme"
+themesDir = "themes"
+title = "// F4dS3c Blog"
+paginate = 3
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+ 
+[params]
+  google_analytics_id = ""
+  twitter_handle = "@anon_faded"
+  showAuthorOnHomepage = true
+  showAuthorOnPosts = false
+  showIntroContentOnHomepage = true # the description below the title on home page
+  showPostsOnHomepage = false
+  showReadTimeOnPosts = true
+  usePaginationOnHomepage = false
+  limitPostsOnHomepage = 3 # only used if usePaginationOnHomepage is false
+  sortPostsByDateOldestFirst = false
+  addDot = true
+  addFrame = false
+  # OLD CORRECTS, OVERWRITTEN IN THE CUSTOM.CSS FILE
+  # ---------
+  # highlightColor = '#7b16ff'
+  # baseColor = "#ffffff"
+  # baseOffsetColor = "#eaeaea"
+  # headingColor = "#1c1b1d"
+  # textColor = "#4e5157"
+  # dotColor = "#7b16ff"
+  # ---------
+  enableGoogleFonts = true 
+  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Ubuntu+Mono:wght@400;700&display=swap"
+  fontFamilyHeading = "Ubuntu"
+  fontFamilyParagraph = "Ubuntu"
+  fontFamilyMonospace = "Ubuntu Mono"
+  showAboutPage = false  # Toggle to control About page visibility
+  github_username = "anonfaded"
+  kofi_username = "fadedx"
+  discord_invite = "kvAZvdkuuN"
+  email = "fadedhood@proton.me"
+  repo_name = "hugo-winston-cyber"  # for GitHub stars badge
+  footer_text = ":: F4dS3c Blog"  # Add this line for custom footer text
+  footer_year = "2024-2025"  # Static year for footer
+
+# markdown config settings https://gohugo.io/getting-started/configuration-markup/#goldmark
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xhtml = false
+
+[menu]
+  [[menu.main]]
+    identifier = 'home'
+    name = 'Home'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = "Blog"
+    identifier = "blog"
+    weight = 2
+    url = "/posts/"
+  [[menu.main]]
+    name = "About"
+    identifier = "about"
+    weight = 3
+    url = "/about/"
+  [[menu.main]]
+    name = "Tags"
+    identifier = "tags"
+    weight = 4
+    url = "/tags/"

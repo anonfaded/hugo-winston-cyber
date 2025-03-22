@@ -1,0 +1,166 @@
+.summary {
+    background-color: var(--base-offset-color) !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin-bottom: 30px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 77, 0, 0.05) !important; /* Adjusted to match theme */
+  }
+  
+  .summary-date {
+    color: var(--text-secondary-color) !important;
+    font-size: 0.9em !important;
+    opacity: 0.7 !important;
+    font-family: monospace !important;
+    position: relative !important;
+    padding-left: 18px !important;
+  }
+  
+  .summary-date::before {
+    content: '[' !important;
+    position: absolute !important;
+    left: 0 !important;
+    color: var(--highlight-color) !important;
+    opacity: 0.7 !important;
+  }
+  
+  .summary-date::after {
+    content: ']' !important;
+    position: absolute !important;
+    color: var(--highlight-color) !important;
+    opacity: 0.7 !important;
+  }
+  
+  .summary-title {
+    position: relative !important;
+    margin-left: 25px !important;
+  }
+  
+  .summary-title::before {
+    content: '>' !important;
+    position: absolute !important;
+    left: -25px !important;
+    color: var(--highlight-color) !important;
+    opacity: 0.6 !important;
+    font-family: monospace !important;
+    font-size: 0.8em !important;
+    top: 6px !important;
+    transition: all 0.3s ease-in-out !important;
+    padding-right: 8px !important;
+    display: inline-block !important;
+  }
+  
+  .summary:hover .summary-title::before {
+    animation: breathe 2s ease-in-out infinite !important;
+  }
+  
+  .summary-description {
+    position: relative !important;
+    padding-left: 15px !important;
+    border-left: 2px solid rgba(255, 77, 0, 0.1) !important; /* Adjusted border */
+  }
+  
+  /* Remove any hover effects */
+  .summary:hover::after,
+  .summary:hover::before {
+    display: none !important;
+  }
+  
+  .summary::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 20px !important;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(255, 77, 0, 0.03),
+      transparent
+    ) !important; /* Adjusted gradient */
+    animation: scanline 8s linear infinite !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+  }
+  
+  .border-animation::before,
+  .border-animation::after {
+    content: '' !important;
+    position: absolute !important;
+    background: var(--highlight-color) !important;
+    opacity: 0 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .border-animation::before {
+    top: 0 !important;
+    left: 0 !important;
+    width: 2px !important;
+    height: 0 !important;
+  }
+  
+  .border-animation::after {
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 2px !important;
+    height: 0 !important;
+  }
+  
+  .summary:hover .border-animation::before,
+  .summary:hover .border-animation::after {
+    height: 100% !important;
+    opacity: 1 !important;
+  }
+  
+  .border-animation > span::before,
+  .border-animation > span::after {
+    content: '' !important;
+    position: absolute !important;
+    background: var(--highlight-color) !important;
+    opacity: 0 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .border-animation > span::before {
+    top: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+  }
+  
+  .border-animation > span::after {
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+  }
+  
+  .summary:hover .border-animation > span::before,
+  .summary:hover .border-animation > span::after {
+    width: 100% !important;
+    opacity: 1 !important;
+  }
+  
+  .summary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .summary .summary-title {
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .summary .summary-description {
+    margin-bottom: 15px !important;
+  }
+  
+  .summary-date {
+    color: var(--text-secondary-color) !important;
+    font-size: 0.9em !important;
+    opacity: 0.7 !important;
+  }
+  

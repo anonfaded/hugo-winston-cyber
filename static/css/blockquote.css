@@ -1,0 +1,158 @@
+/* Basic blockquote styles */
+.content blockquote {
+    position: relative !important;
+    background: var(--base-offset-color) !important;
+    border-left: 4px solid var(--highlight-color) !important;
+    margin: 25px 0 !important;
+    padding: 15px 30px !important; /* Reduced vertical padding */
+    border-radius: 8px !important;
+    font-style: normal !important;
+}
+
+/* Material icon for blockquotes */
+.content blockquote::before {
+    font-family: 'Material Icons Round' !important;
+    content: 'format_quote' !important;
+    position: absolute !important;
+    top: -30px !important; /* Move up more to overflow */
+    right: 2px !important;
+    font-size: 52px !important; /* Slightly larger */
+    color: var(--highlight-color) !important;
+    opacity: 0.8 !important; /* More visible */
+    transform: rotate(0deg) !important;
+    background: transparent !important; /* Remove background */
+    text-shadow: 0 0 10px rgba(237, 41, 57, 0.3) !important; /* Add subtle glow */
+}
+
+/* Admonition styles */
+.content blockquote.admonition {
+    padding-left: 60px !important;
+    border-left: none !important;
+    border-radius: 8px !important;
+    position: relative !important;
+}
+
+/* Note admonition */
+.content blockquote.note {
+    background: rgba(33, 150, 243, 0.1) !important;
+    border: 1px solid rgba(33, 150, 243, 0.2) !important;
+}
+
+.content blockquote.note::before {
+    content: 'info' !important;
+    color: #2196F3 !important;
+    transform: none !important;
+}
+
+/* Warning admonition */
+.content blockquote.warning {
+    background: rgba(255, 152, 0, 0.1) !important;
+    border: 1px solid rgba(255, 152, 0, 0.2) !important;
+}
+
+.content blockquote.warning::before {
+    content: 'warning' !important;
+    color: #FF9800 !important;
+    transform: none !important;
+}
+
+/* Danger admonition */
+.content blockquote.danger {
+    background: rgba(244, 67, 54, 0.1) !important;
+    border: 1px solid rgba(244, 67, 54, 0.2) !important;
+}
+
+.content blockquote.danger::before {
+    content: 'error_outline' !important;
+    color: #F44336 !important;
+    transform: none !important;
+}
+
+/* Tip admonition */
+.content blockquote.tip {
+    background: rgba(76, 175, 80, 0.1) !important;
+    border: 1px solid rgba(76, 175, 80, 0.2) !important;
+}
+
+.content blockquote.tip::before {
+    content: 'tips_and_updates' !important;
+    color: #4CAF50 !important;
+    transform: none !important;
+}
+
+/* Common admonition icon styles */
+.content blockquote.admonition::before {
+    font-family: 'Material Icons Round' !important;
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 24px !important;
+    opacity: 0.9 !important;
+}
+
+/* Title styling for admonitions */
+.content blockquote[class*="!!!"] strong:first-child {
+    display: block !important;
+    font-size: 1.1em !important;
+    margin-bottom: 8px !important;
+    color: inherit !important;
+}
+
+/* Nested blockquotes */
+.content blockquote blockquote {
+    border-left-color: rgba(237, 41, 57, 0.5) !important;
+    background: rgba(20, 20, 20, 0.2) !important;
+    margin: 15px 0 !important;
+}
+
+/* Text styling inside blockquotes */
+.content blockquote p {
+    color: var(--text-color) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0 !important;
+    margin: 0 !important; /* Remove default margins */
+}
+
+/* Headers inside blockquotes */
+.content blockquote strong {
+    color: var(--heading-color) !important;
+    font-weight: 600 !important;
+    display: block !important;
+    margin-bottom: 5px !important; /* Reduced space after header */
+}
+
+/* Lists inside blockquotes */
+.content blockquote ul,
+.content blockquote ol {
+    margin: 10px 0 0 20px !important;
+    padding: 0 !important;
+}
+
+/* Code inside blockquotes */
+.content blockquote code {
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .content blockquote {
+        padding: 12px 20px !important; /* Even smaller padding on mobile */
+        margin: 25px 0 !important;
+    }
+
+    .content blockquote::before {
+        top: -20px !important; /* Slightly less up on mobile */
+        font-size: 40px !important;
+    }
+
+    .content blockquote[class*="!!!"] {
+        padding: 15px 15px 15px 50px !important;
+    }
+
+    .content blockquote[class*="!!!"]::before {
+        left: 15px !important;
+        font-size: 20px !important;
+    }
+}

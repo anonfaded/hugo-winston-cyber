@@ -1,0 +1,55 @@
+{{ define "body_classes" }}page-home{{ end }}
+
+{{ define "main" }}
+  {{ if eq .RelPermalink "/about/" }}
+    {{ if not .Site.Params.showAboutPage }}
+      {{ return }}
+    {{ end }}
+  {{ end }}
+
+  {{ $styles := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "style.scss" . }}
+
+  {{ if .Site.Params.showAuthorOnHomepage }}
+    {{ partial "author-large.html" . }}
+  {{ end }}
+
+  <div class="intro">
+    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
+    {{ if .Site.Params.showIntroContentOnHomepage}}
+      <div class="intro-content">{{ .Content }}</div>
+    {{ end }}
+  </div>
+
+<!-- Read Posts Section -->
+<div class="read-posts">
+  <a href="/posts" class="read-posts-link">Read Posts</a>
+  <span class="material-icons">north_east</span>
+</div>
+
+  {{ if .Site.Params.showPostsOnHomepage }}
+
+    {{ $pages := where .Site.RegularPages "Type" "posts" }}
+    {{ $sorted := ($pages.ByParam "date").Reverse }}
+    {{ if .Site.Params.sortPostsByDateOldestFirst }}
+      {{ $sorted = $pages.ByParam "date" }}
+    {{ end }}
+
+    {{ $paginator := .Paginate $sorted }}
+
+    {{ if .Site.Params.usePaginationOnHomepage }}
+      {{ range $paginator.Pages }}
+        {{ .Render "summary" }}
+      {{ end }}
+      {{ partial "paginator" . }}
+    {{ else }}
+      {{ $limit := .Site.Params.limitPostsOnHomepage | default 3 }}
+      {{ range first $limit $sorted}}
+        {{ .Render "summary" }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+{{ end }}
+
+{{ define "footer_js" }}
+{{ end }}

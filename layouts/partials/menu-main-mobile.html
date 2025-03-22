@@ -1,0 +1,12 @@
+<div id="menu-main-mobile" class="menu-main-mobile">
+    <ul class="menu">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+            {{ if not (and (eq .Identifier "about") (not $.Site.Params.showAboutPage)) }}
+                <li class="menu-item-{{ .Name | lower }}{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">
+                    <a href="{{ .URL | absLangURL }}" data-section="{{ trim .URL "/" }}">{{ .Name }}</a>
+                </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+</div>

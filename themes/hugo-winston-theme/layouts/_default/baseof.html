@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{ .Site.BaseURL }}favicon.png">
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
+    {{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "style.scss" . | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" false) }}
+    {{ $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" }}
+    <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
+    <link rel="stylesheet" href="{{ ($extended | minify | fingerprint).RelPermalink }}">
+  {{- else }}
+    {{ $style := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "style.scss" . | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" true) }}
+    {{ $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" }}
+    <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
+    <link rel="stylesheet" href="{{ ($extended).RelPermalink }}">
+  {{- end }}
+
+  {{ block "meta_tags" . }}
+    {{ if .Params.description }}<meta name="description" content="{{ .Params.description }}"/>{{ end }}
+    <meta property="og:title" content="{{ .Title }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ .Permalink }}"/>
+    <!-- Update default OG image -->
+    <meta property="og:image" content="{{ .Site.BaseURL }}images/og-image-webp.webp"/>
+    <meta property="og:image:type" content="image/webp"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    {{ if .Params.description }}<meta property="og:description" content="{{ .Params.description }}"/>{{ end }}
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    {{ if .Site.Params.twitter_handle }}<meta name="twitter:site" content="{{ .Site.Params.twitter_handle }}"/>{{ end }}
+    {{ if .Site.Params.twitter_handle }}<meta name="twitter:creator" content="{{ .Site.Params.twitter_handle }}"/>{{ end }}
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}images/og-image-webp.webp"/>
+  {{ end }}
+
+  {{ if and .Site.Params.googleFontsUrl .Site.Params.enableGoogleFonts }}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{{ .Site.Params.googleFontsUrl }}" rel="stylesheet">
+  {{ end }}
+
+  <!-- css for custom styles -->
+  <link rel="stylesheet" href="/css/custom.css" />
+  <!-- css for table of contents -->
+  <link rel="stylesheet" href="/css/toc.css" />
+  <!-- css for tooltip on links -->
+  <link rel="stylesheet" href="/css/link-tooltip.css" />
+  <!-- css for inline code copy -->
+  <link rel="stylesheet" href="/css/inlinecode-tooltip.css" />
+  <!-- css for header -->
+  <link rel="stylesheet" href="/css/header.css" />
+  <!-- css for blockquotes -->
+  <link rel="stylesheet" href="/css/blockquote.css" />
+  <!-- css for summary blog page -->
+  <link rel="stylesheet" href="/css/summary-blog-page.css" />
+  <!-- css for author -->
+  <link rel="stylesheet" href="/css/author.css" />
+  <!-- import material icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- import ubuntu mono font -->
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <!-- Mobile menu styles and scripts -->
+  <link rel="stylesheet" href="/css/mobile-menu.css" />
+
+  <!-- Add table styles -->
+  <link rel="stylesheet" href="/css/table.css" />
+
+  <!-- Add list styles -->
+  <link rel="stylesheet" href="/css/lists.css" />
+<!-- css for footer -->
+  <link rel="stylesheet" href="/css/footer.css" />
+
+  {{ partial "extend-head.html" . }}
+</head>
+
+{{ $themeStyle := slice "" }}
+{{ if eq .Site.Params.addFrame true }}{{ $themeStyle = $themeStyle | append "frame" }}{{ end }}
+
+<body class='page{{ delimit $themeStyle " " }} {{ block "body_classes" . }}{{ end }}'>
+  {{ if and (eq .RelPermalink "/about/") (not .Site.Params.showAboutPage) }}
+    <script>window.location.href = "/404.html";</script>
+  {{ else }}
+    {{ partial "menu-main-mobile.html" . }}
+    <div id="wrapper" class="wrapper">
+      {{ partial "header.html" . }}
+      {{ block "main" . }}
+      {{ end }}
+    </div>
+    {{ partial "footer.html" . }} <!-- Moved outside wrapper -->
+    {{ partial "footer-scripts.html" . }}
+
+  {{ end }}
+
+  <!-- Add lightbox container -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <img src="" alt="Lightbox Image">
+    </div>
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+  </div>
+
+  {{ $scripts := resources.Get "js/scripts.js" }}
+
+  {{ $js := slice $scripts | resources.Concat "js/bundle.js" }}
+
+  {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
+    <script type="text/javascript" src="{{ ($js | minify | fingerprint).RelPermalink }}"></script>
+  {{ else }}
+    <script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
+  {{ end }}
+
+  {{ block "footer_js" . }}
+  {{ end }}
+
+  <!-- Custom scripts -->
+  <!-- script for heading anchors -->
+  <script src="/js/heading-anchors.js" defer></script>
+  <!-- script for table of contents -->
+  <script src="/js/toc.js" defer></script>
+  <!-- script for lightbox -->
+  <script src="/js/lightbox.js" defer></script>
+  <!-- script for inline code copy -->
+  <script src="/js/inline-code-copy.js" defer></script>
+  <!-- script for link tooltip -->
+  <script src="/js/link-tooltip.js" defer></script>
+  <!-- script for mobile menu -->
+  <script src="/js/mobile-menu.js" defer></script>
+  <!-- script for header -->
+  <script src="/js/header.js" defer></script>
+  <!-- script for author on home page -->
+  <script src="/js/author.js" defer></script>
+
+  <!-- Add table script -->
+  <script src="/js/table.js" defer></script>
+
+  {{ partial "google-analytics.html" . }}
+  {{ partial "plausible-analytics.html" . }}
+  {{ partial "extend-footer.html" . }}
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* Table container */
+.table-container {
+  position: relative !important;
+  margin: 25px 0 45px !important; /* Added bottom margin for copy button */
+  border-radius: 8px !important;
+  background: var(--base-offset-color) !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Scrollable wrapper */
+.content .table-wrapper {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: 12px !important;
+}
+
+/* Copy button */
+.table-copy-btn {
+  position: absolute !important;
+  bottom: -36px !important;
+  right: 0 !important;
+  background: var(--code-bg) !important;
+  border: 1px solid rgba(237, 41, 57, 0.2) !important;
+  color: var(--text-color) !important;
+  padding: 4px 8px !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  opacity: 0.7 !important;
+  z-index: 20 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 12px !important;
+}
+
+.table-copy-btn .material-icons {
+  font-size: 14px !important;
+}
+
+.table-copy-btn::after {
+  content: 'Copy table' !important;
+  color: var(--text-color) !important;
+}
+
+.table-copy-btn:hover {
+  opacity: 1 !important;
+  background: var(--base-color) !important;
+  border-color: var(--highlight-color) !important;
+  color: var(--highlight-color) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.table-copy-btn.copied {
+  background: rgba(152, 195, 121, 0.1) !important;
+  border-color: #98C379 !important;
+  color: #98C379 !important;
+}
+
+.table-copy-btn.copied::after {
+  content: 'Copied!' !important;
+  color: #98C379 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .table-container {
+    margin: 25px 0 45px !important;
+  }
+
+  .content table {
+    display: table !important;
+    width: 100% !important;
+  }
+
+  .content table th,
+  .content table td {
+    min-width: 0 !important; /* Remove min-width */
+    width: auto !important;
+    word-wrap: break-word !important;
+  }
+}
+
+/* Table styles */
+.content table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background: transparent !important;
+}
+
+/* Table header */
+.content table thead {
+  background: var(--code-bg) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+}
+
+.content table th {
+  padding: 12px !important;
+  text-align: left !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: var(--heading-color) !important;
+  border-bottom: 2px solid rgba(237, 41, 57, 0.2) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  white-space: normal !important; /* Allow wrapping */
+}
+
+.content table th:last-child {
+  border-right: none !important;
+}
+
+/* Table cells */
+.content table td {
+  padding: 12px !important;
+  color: var(--text-color) !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 0.9rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
+  white-space: normal !important; /* Allow wrapping */
+  word-break: normal !important;
+  word-wrap: break-word !important;
+}
+
+.content table td:last-child {
+  border-right: none !important;
+}
+
+/* Row styles */
+.content table tbody tr:hover {
+  background: rgba(237, 41, 57, 0.03) !important;
+}
+
+.content table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Last row */
+.content table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Cell hover effect */
+.content table td:hover {
+  background: rgba(237, 41, 57, 0.08) !important;
+}
+
+/* Table caption */
+.content table caption {
+  margin-bottom: 10px !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 0.9rem !important;
+  color: #888 !important;
+  text-align: left !important;
+  font-style: italic !important;
+}
+
+/* Custom scrollbar */
+.content .table-wrapper::-webkit-scrollbar {
+  height: 8px !important;
+  width: 8px !important;
+}
+
+.content .table-wrapper::-webkit-scrollbar-track {
+  background: var(--base-color) !important;
+  border-radius: 4px !important;
+}
+
+.content .table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(237, 41, 57, 0.2) !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.content .table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(237, 41, 57, 0.4) !important;
+}
+
+/* Sort animation */
+.content table tbody tr {
+  transition: all 0.3s ease-out !important;
+}
+
+.content table tbody tr.sorting {
+  opacity: 0.5 !important;
+}

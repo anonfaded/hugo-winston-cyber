@@ -1,0 +1,30 @@
+<div class="footer">
+    <div class="footer-content">
+        <div class="footer-copyright">
+            <span>© {{ .Site.Params.footer_year }} {{ .Site.Params.footer_text }}</span>
+        </div>
+        
+        <div class="footer-social">
+            <!-- Social Icons -->
+            <a href="https://github.com/{{ .Site.Params.github_username }}" target="_blank" title="GitHub">
+                {{ readFile "static/images/icons/github.svg" | safeHTML }}
+            </a>
+            <a href="https://ko-fi.com/{{ .Site.Params.kofi_username }}" target="_blank" title="Ko-fi">
+                {{ readFile "static/images/icons/ko-fi.svg" | safeHTML }}
+            </a>
+            <a href="https://discord.gg/{{ .Site.Params.discord_invite }}" target="_blank" title="Discord">
+                {{ readFile "static/images/icons/discord.svg" | safeHTML }}
+            </a>
+            <a href="mailto:{{ .Site.Params.email }}" title="Email">
+                {{ readFile "static/images/icons/email.svg" | safeHTML }}
+            </a>
+            
+            <!-- GitHub Stars Badge -->
+            <div class="github-stars">
+                <a href="https://github.com/{{ .Site.Params.github_username }}/{{ .Site.Params.repo_name }}" target="_blank">
+                    <img src="https://img.shields.io/github/stars/{{ .Site.Params.github_username }}/{{ .Site.Params.repo_name }}?style=social" alt="GitHub stars">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

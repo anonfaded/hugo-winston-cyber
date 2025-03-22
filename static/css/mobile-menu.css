@@ -1,0 +1,570 @@
+/* Base menu container */
+.menu-main-mobile {
+  background: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-left: 1px solid rgba(237, 41, 57, 0.1) !important;
+  padding: 20px 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+  transform: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  z-index: 999 !important;
+}
+
+.menu-main-mobile.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Background gradient */
+.menu-main-mobile::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(
+    45deg,
+    rgba(237, 41, 57, 0.05),
+    rgba(0, 0, 0, 0.1)
+  ) !important;
+  z-index: -1 !important;
+}
+
+/* Simplified menu links */
+.menu-main-mobile ul {
+  padding: 0 0 0 40px !important;
+  max-width: 600px !important;
+  list-style: none !important;
+}
+
+.menu-main-mobile ul li {
+  margin: 25px 0 !important;
+  text-align: left !important;
+}
+
+.menu-main-mobile ul li a {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: 'Ubuntu', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  color: #e6e6e6 !important;
+  padding: 5px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  letter-spacing: 1px !important;
+  text-align: left !important;
+  position: relative !important;
+  text-decoration: none !important;
+  transform: none !important;
+}
+
+/* Terminal arrow */
+.menu-main-mobile ul li a::before {
+  content: '>' !important;
+  margin-right: 12px !important;
+  color: var(--highlight-color) !important;
+  opacity: 0.6 !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 1.6rem !important;
+  transform: translateY(1px) !important;
+}
+
+/* Static underline */
+.menu-main-mobile ul li a::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 1px !important;
+  background: var(--highlight-color) !important;
+  box-shadow: 0 0 5px var(--highlight-color) !important;
+  opacity: 0.8 !important;
+}
+
+/* Simple hover effect */
+.menu-main-mobile ul li a:hover {
+  background: transparent !important;
+  color: var(--highlight-color) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .menu-main-mobile ul {
+    padding: 0 0 0 25px !important;
+  }
+  
+  .menu-main-mobile ul li a {
+    font-size: 1.8rem !important;
+  }
+  
+  .menu-main-mobile ul li a::before {
+    font-size: 1.4rem !important;
+    margin-right: 10px !important;
+  }
+}
+
+/* Enhanced hamburger button */
+.hamburger {
+  width: 35px !important;
+  height: 35px !important;
+  position: relative !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  border: 1px solid rgba(237, 41, 57, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(5px) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(237, 41, 57, 0.1) !important;
+}
+
+.hamburger:hover {
+  border-color: rgba(237, 41, 57, 0.4) !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(237, 41, 57, 0.2),
+    0 0 20px rgba(237, 41, 57, 0.1) !important;
+}
+
+/* Scanline animation */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%) !important;
+    opacity: 0 !important;
+  }
+  50% {
+    opacity: 1 !important;
+  }
+  100% {
+    transform: translateY(100%) !important;
+    opacity: 0 !important;
+  }
+}
+
+.menu-main-mobile::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 100px !important;
+  background: linear-gradient(
+    transparent,
+    rgba(237, 41, 57, 0.05),
+    transparent
+  ) !important;
+  animation: scanline 8s linear infinite !important;
+  pointer-events: none !important;
+}
+
+/* Updated hamburger styles */
+.hamburger-wrapper {
+  display: block !important; /* Always show */
+  z-index: 1000 !important;
+}
+
+@media (min-width: 1200px) { /* Only hide on very large screens */
+  .hamburger-wrapper {
+    display: none !important;
+  }
+}
+
+.hamburger-button {
+  width: 60px !important; /* Increased size */
+  height: 60px !important;
+  position: relative !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  border: 1px solid rgba(237, 41, 57, 0.2) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(5px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(237, 41, 57, 0.1) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  transition: all 0.3s ease !important;
+  margin-top: 0 !important; /* Reset any previous margin */
+  padding: 4px 0 !important; /* Add some vertical padding */
+  transform: translateY(2px) !important; /* Move down slightly */
+}
+
+.hamburger-button::after {
+  content: 'MENU' !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 10px !important;
+  color: var(--highlight-color) !important;
+  letter-spacing: 2px !important;
+  position: absolute !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+}
+
+.hamburger-icon {
+  width: 30px !important;
+  height: 2px !important;
+  background: transparent !important;
+  position: relative !important;
+  transform: translateY(-4px) !important;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 30px !important;
+  height: 2px !important;
+  background: var(--highlight-color) !important;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6) !important;
+  left: 0 !important;
+}
+
+.hamburger-icon::before {
+  top: -4px !important;
+}
+
+.hamburger-icon::after {
+  top: 4px !important;
+}
+
+/* Hover effect */
+.hamburger-button:hover {
+  background: rgba(237, 41, 57, 0.1) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(237, 41, 57, 0.3),
+    0 0 30px rgba(237, 41, 57, 0.1) !important;
+}
+
+.hamburger-button:hover::after {
+  transform: scale(1.1) !important;
+  opacity: 1 !important;
+  text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+}
+
+.hamburger-button:hover .hamburger-icon::before {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 10px rgba(237, 41, 57, 0.5) !important;
+}
+
+.hamburger-button:hover .hamburger-icon::after {
+  transform: translateY(2px) !important;
+  box-shadow: 0 0 10px rgba(237, 41, 57, 0.5) !important;
+}
+
+/* Active state animation */
+.hamburger-button.is-active::after {
+  content: 'CLOSE' !important;
+  opacity: 1 !important;
+}
+
+.hamburger-button.is-active .hamburger-icon::before {
+  transform: rotate(45deg) translate(2px, 2px) !important;
+  width: 28px !important;
+}
+
+.hamburger-button.is-active .hamburger-icon::after {
+  transform: rotate(-45deg) translate(2px, -2px) !important;
+  width: 28px !important;
+}
+
+/* Updated responsive breakpoints */
+@media (min-width: 1024px) {
+  .hamburger-wrapper {
+    display: none !important;
+  }
+  .menu-main {
+    display: block !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .menu-main {
+    display: none !important;
+  }
+  .hamburger-wrapper {
+    display: block !important;
+  }
+}
+
+/* Enhanced hamburger button */
+.hamburger-button {
+  width: 50px !important; /* Reduced width */
+  height: 45px !important; /* Reduced height */
+  position: relative !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  border: 1px solid rgba(237, 41, 57, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(5px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(237, 41, 57, 0.1) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+/* Menu text animation */
+.hamburger-button::before,
+.hamburger-button::after {
+  content: 'MENU' !important;
+  position: absolute !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-size: 10px !important;
+  color: var(--highlight-color) !important;
+  letter-spacing: 2px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  opacity: 0.8 !important;
+}
+
+.hamburger-button::before {
+  transform: translateY(0) !important;
+}
+
+.hamburger-button::after {
+  content: 'CLOSE' !important;
+  transform: translateY(20px) !important;
+  opacity: 0 !important;
+}
+
+/* Hamburger icon lines */
+.hamburger-icon {
+  width: 24px !important; /* Reduced width */
+  height: 14px !important; /* Container for lines */
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 24px !important;
+  height: 2px !important;
+  background: var(--highlight-color) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform-origin: center !important;
+}
+
+.hamburger-icon::before {
+  top: 0 !important;
+}
+
+.hamburger-icon::after {
+  bottom: 0 !important;
+}
+
+/* Active state animations */
+.hamburger-button.is-active::before {
+  transform: translateY(-20px) !important;
+  opacity: 0 !important;
+}
+
+.hamburger-button.is-active::after {
+  transform: translateY(0) !important;
+  opacity: 0.8 !important;
+}
+
+.hamburger-button.is-active .hamburger-icon::before {
+  transform: translateY(7px) rotate(45deg) !important;
+}
+
+.hamburger-button.is-active .hamburger-icon::after {
+  transform: translateY(-7px) rotate(-45deg) !important;
+}
+
+/* Hover effects */
+.hamburger-button:hover {
+  background: rgba(237, 41, 57, 0.1) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(237, 41, 57, 0.3),
+    0 0 30px rgba(237, 41, 57, 0.1) !important;
+}
+
+.hamburger-button:hover::before,
+.hamburger-button:hover::after {
+  opacity: 1 !important;
+  text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+}
+
+.hamburger-button:hover .hamburger-icon::before {
+  transform: translateY(-1px) !important;
+}
+
+.hamburger-button:hover .hamburger-icon::after {
+  transform: translateY(1px) !important;
+}
+
+/* New hamburger styles */
+.hamburger-button {
+  cursor: pointer !important;
+  width: 50px !important;
+  height: 50px !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(10, 10, 10, 0.95) !important;
+  border: 1px solid rgba(237, 41, 57, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.hamburger-input {
+  display: none !important;
+}
+
+.hamburger-button svg {
+  height: 24px !important;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.line {
+  fill: none !important;
+  stroke: var(--highlight-color) !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  stroke-width: 2.5 !important;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63 !important;
+  stroke-dashoffset: 0 !important; /* Reset initial state */
+}
+
+.menu-text {
+  position: absolute !important;
+  bottom: 4px !important;
+  font-size: 10px !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  color: var(--highlight-color) !important;
+  letter-spacing: 2px !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Active states */
+.hamburger-input:checked + svg {
+  transform: rotate(-45deg) !important;
+}
+
+.hamburger-input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300 !important;
+  stroke-dashoffset: -32.42 !important;
+}
+
+/* Hover effects */
+.hamburger-button:hover {
+  background: rgba(237, 41, 57, 0.1) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(237, 41, 57, 0.3),
+    0 0 30px rgba(237, 41, 57, 0.1) !important;
+}
+
+.hamburger-button:hover .line {
+  stroke: var(--highlight-color) !important;
+  filter: drop-shadow(0 0 2px var(--highlight-color)) !important;
+}
+
+.hamburger-button:hover .menu-text {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+  text-shadow: 0 0 8px rgba(237, 41, 57, 0.5) !important;
+}
+
+/* Hide original menu text animations */
+.hamburger-button::before,
+.hamburger-button::after {
+  display: none !important;
+}
+
+/* Updated minimal hamburger button */
+.hamburger-button {
+  cursor: pointer !important;
+  width: auto !important;
+  height: 35px !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important; /* Reset any previous margin */
+  padding: 4px 0 !important; /* Add some vertical padding */
+  transform: translateY(2px) !important; /* Move down slightly */
+  margin-top: -2px !important;
+  gap: 2px !important; /* Minimal gap between icon and text */
+}
+
+.hamburger-button svg {
+  height: 28px !important; /* Increased SVG size */
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin: 0 !important;
+  transform: rotate(0) !important; /* Ensure initial state */
+}
+
+.menu-text {
+  position: relative !important;
+  font-size: 11px !important;
+  font-family: 'Ubuntu Mono', monospace !important;
+  color: var(--highlight-color) !important;
+  letter-spacing: 1px !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+  margin-top: 1px !important;
+}
+
+/* Remove hover background effect */
+.hamburger-button:hover {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Keep SVG and text styles */
+.hamburger-button svg {
+  height: 24px !important;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin-bottom: 8px !important; /* Add space between icon and text */
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .menu-main-mobile ul {
+    padding: 0 0 0 25px !important;
+  }
+  
+  .menu-main-mobile ul li a {
+    font-size: 1.8rem !important;
+  }
+  
+  .menu-main-mobile ul li a::before {
+    font-size: 1.4rem !important;
+    margin-right: 10px !important;
+  }
+}

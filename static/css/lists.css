@@ -1,0 +1,83 @@
+/* Basic list styling */
+.content ul,
+.content ol {
+    margin: 1em 0 !important;
+    padding-left: 1.2em !important;
+}
+
+/* List items - both ordered and unordered */
+.content ul li,
+.content ol li {
+    color: var(--text-color) !important; /* Use theme text color */
+    position: relative !important;
+    padding-left: 0.5em !important;
+    margin-bottom: 0.5em !important;
+}
+
+/* List markers only (dots and numbers) */
+.content ul li::marker,
+.content ol li::marker {
+    color: #666666 !important; /* Even darker than theme text color (#BBBBBB) */
+}
+
+/* Custom checkbox styling */
+.content ul li:has(input[type="checkbox"]) {
+    list-style: none !important;
+    padding-left: 1.8em !important;
+}
+
+/* Unchecked box */
+.content input[type="checkbox"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 16px !important;
+    height: 16px !important;
+    border: 1px solid rgba(237, 41, 57, 0.4) !important;
+    border-radius: 3px !important;
+    margin-right: 8px !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 4px !important;
+    background: rgba(20, 20, 20, 0.4) !important;
+}
+
+/* Checked box */
+.content input[type="checkbox"]:checked {
+    background: var(--highlight-color) !important;
+    border-color: var(--highlight-color) !important;
+}
+
+/* Checkmark icon */
+.content input[type="checkbox"]:checked::before {
+    content: '✓' !important;
+    display: block !important;
+    color: #fff !important;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    text-align: center !important;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Make checked items darker too */
+.content input[type="checkbox"]:checked + span {
+    color: #666666 !important;
+}
+
+/* Hover effects */
+.content input[type="checkbox"]:hover {
+    border-color: var(--highlight-color) !important;
+    box-shadow: 0 0 5px rgba(237, 41, 57, 0.2) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .content ul,
+    .content ol {
+        padding-left: 1em !important;
+    }
+    
+    .content input[type="checkbox"] {
+        width: 14px !important;
+        height: 14px !important;
+    }
+}

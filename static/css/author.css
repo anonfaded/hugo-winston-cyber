@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+.author-large {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Left: Image | Right: Name + Typing */
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--base-offset-color);
+  color: var(--text-color);
+  font-family: 'Ubuntu Mono', monospace;
+  border-radius: 12px;
+  width: 320px; /* Fixed width */
+  max-width: 100%;
+  margin-bottom: 40px; /* Adds space below the author section */
+}
+
+/* 🔥 Fix: Red Border on Image */
+.author-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--highlight-color);
+}
+
+/* 🔥 Fix: Name & Typing Effect Grid */
+.author-info {
+  display: grid;
+  grid-template-rows: auto auto; /* First row: Name | Second row: Typing effect */
+  align-items: start;
+  justify-content: start; /* Align to Left */
+  width: 100%;
+}
+
+/* 🔥 Fix: Name Alignment */
+.author-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  /* text-transform: uppercase; */
+  color: var(--heading-color);
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* 🔥 Fix: Add left padding to the typing effect row */
+.author-title {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    min-height: 1.2rem;
+    text-align: left;
+    padding-left: 4px; /* Adjust for perfect alignment */
+  }
+  
+
+/* 🔥 Fix: Red Cursor */
+.cursor {
+  display: inline-block;
+  width: 6px;
+  background: var(--highlight-color);
+  height: 1em;
+  margin-left: 2px;
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  50% { opacity: 0; }
+}

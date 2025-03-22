@@ -1,0 +1,298 @@
+/* Using flex to push footer down */
+body {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    position: relative !important; /* Added for viewport positioning */
+}
+
+.wrapper {
+    flex: 1 0 auto !important; /* Changed to flex-grow with no shrink */
+    width: 100% !important;
+    margin-bottom: 50px !important; /* Space for footer */
+    display: block !important; /* Changed from flex to block */
+    padding-bottom: 80px !important; /* Reduced space for footer */
+    min-height: calc(100vh - 100px) !important; /* Account for footer height */
+}
+
+.main {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+}
+
+.content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important; /* Remove extra margin */
+    overflow-x: hidden !important; /* Prevent horizontal scroll */
+}
+
+.footer {
+    flex-shrink: 0 !important; /* Prevent footer from shrinking */
+    position: relative !important; /* Changed from absolute */
+    margin-top: auto !important; /* Push to bottom of available space */
+    padding: 0 15px 10px !important; /* Reduced bottom padding */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.footer-content {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 8px 20px !important;
+    min-height: 44px !important; /* More compact height */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important; /* Revert to space-between for desktop */
+    background: rgba(10, 10, 10, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    gap: 0 !important; /* Remove gap */
+}
+
+.footer-copyright {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    color: var(--text-color) !important;
+    font-family: 'Ubuntu Mono', monospace !important;
+    font-size: 0.95rem !important;
+    white-space: nowrap !important;
+    margin-right: 5px !important; /* Small space before social icons */
+}
+
+.footer-social {
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important; /* Minimal gap */
+    padding: 0 !important;
+    flex-wrap: nowrap !important; /* Force single row */
+    white-space: nowrap !important;
+    margin-left: auto !important; /* Push to right on desktop */
+}
+
+.footer-social a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 3px !important; /* Smaller padding */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    gap: 8px !important;
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+.footer-social a:hover {
+    opacity: 1 !important;
+    transform: translateY(-2px) !important;
+}
+
+.footer-social img {
+    width: 24px !important;
+    height: 24px !important;
+    filter: brightness(0.8) !important;
+}
+
+.footer-social a:hover img {
+    filter: brightness(1) !important;
+}
+
+/* Fix SVG icon colors */
+.footer-social svg {
+    width: 15px !important;
+    height: 15px !important;
+    fill: var(--text-color) !important;
+    opacity: 0.8 !important;
+    transition: all 0.3s ease !important;
+    margin-top: 1px !important; /* Slight adjustment for vertical alignment */
+}
+
+.footer-social a:hover svg {
+    fill: #ffffff !important;
+    transform: translateY(-2px) !important;
+    opacity: 1 !important;
+}
+
+/* GitHub badge specific styling */
+.github-stars {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-left: 4px !important;
+    padding-top: 0 !important;
+}
+
+.github-stars img {
+    height: 18px !important;
+    width: auto !important;
+    min-width: unset !important; /* Remove forced width */
+}
+
+.github-stats {
+    display: flex !important;
+    align-items: center !important;
+    margin-left: 20px !important;
+    min-width: 90px !important; /* Reserve space */
+}
+
+.github-stats img {
+    height: 20px !important;
+    width: auto !important;
+    opacity: 0.8 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .footer {
+        width: calc(100% - 24px) !important; /* Consistent spacing */
+        bottom: 15px !important; /* Slightly closer on mobile */
+        padding: 0 12px !important; /* Even padding on both sides */
+        padding-bottom: 8px !important;
+    }
+
+    .footer-content {
+        padding: 6px 10px !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        min-height: unset !important;
+        justify-content: center !important; /* Center on mobile only */
+        align-items: center !important; /* Center all content */
+    }
+
+    .footer-social {
+        display: flex !important; /* Override previous grid */
+        flex-direction: row !important; /* Force row */
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+        justify-content: center !important; /* Center all items */
+        align-items: center !important;
+        width: auto !important; /* Don't force full width */
+        margin: 0 auto !important; /* Center the container */
+    }
+
+    .footer-social a {
+        padding: 2px !important;
+    }
+
+    .footer-social svg {
+        width: 14px !important; /* Smaller icons */
+        height: 14px !important;
+    }
+
+    .github-stats {
+        margin-left: 15px !important;
+        min-width: 80px !important;
+        margin-top: 20px !important;
+    }
+
+    .github-stars {
+        grid-column: 1 / -1 !important; /* Full width for stars badge */
+        margin: 0 0 0 8px !important; /* Same gap as other icons */
+        width: auto !important;
+        justify-content: flex-start !important; /* Align like other icons */
+    }
+
+    .github-stars img {
+        height: 16px !important; /* Smaller stars badge */
+        transform: translateY(1px) !important; /* Align with icons */
+    }
+
+    .footer-copyright {
+        order: 2 !important; /* Move copyright to bottom on mobile */
+        font-size: 0.9rem !important;
+    }
+
+    .wrapper {
+        margin-bottom: 40px !important; /* Less space on mobile */
+        padding-bottom: 70px !important; /* Less padding on mobile */
+        min-height: calc(100vh - 80px) !important; /* Slightly less space on mobile */
+    }
+}
+
+/* Smallest screens */
+@media (max-width: 480px) {
+    .wrapper {
+        margin-bottom: 150px !important; /* Increased from 80px to 150px */
+    }
+
+    .footer {
+        width: calc(100% - 20px) !important; /* Even smaller devices */
+        padding: 0 10px !important; /* Equal padding left/right */
+    }
+
+    .footer-content {
+        padding: 6px 8px !important; /* Slightly reduced padding */
+    }
+
+    .footer-social {
+        gap: 6px !important; /* Minimal gap */
+        flex-wrap: nowrap !important; /* Never wrap */
+    }
+
+    .footer-social svg {
+        width: 14px !important; /* Slightly smaller icons */
+        height: 14px !important;
+    }
+
+    .github-stars img {
+        height: 16px !important; /* Slightly smaller badge */
+    }
+
+    .github-stars {
+        margin-left: 0 !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Remove wrapper margin since footer isn't fixed anymore */
+#wrapper {
+    margin-bottom: 0 !important;
+}
+
+/* Footer social icons */
+.footer-social {
+    display: flex !important;
+    gap: 4px !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important; /* Remove bottom margin */
+    align-items: center !important;
+}
+  
+.footer-social a {
+    color: rgba(255, 255, 255, 0.7) !important; /* White with opacity */
+    transition: all 0.3s ease !important;
+}
+  
+.footer-social a:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+  
+.footer-social .material-icons {
+    font-size: 24px !important;
+}
+
+/* Add this to create space for footer */
+.wrapper {
+    display: block !important; /* Changed from flex to block */
+    min-height: unset !important; /* Remove previous min-height */
+    padding-bottom: 80px !important;
+}
+
+/* Ensure content has enough space */
+.content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 20px !important; /* Reduced margin */
+    margin-bottom: 60px !important; /* Add extra space after content */
+    overflow-x: hidden !important; /* Prevent horizontal scroll */
+}
+

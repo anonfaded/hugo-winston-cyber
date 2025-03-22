@@ -1,0 +1,195 @@
+/* Outer header: full width with side padding (floating effect) */
+.header {
+    position: fixed;
+    top: 12px;
+    left: 0;
+    right: 0;
+    padding: 0 15px;  /* side gaps so the dock isn’t flush with the viewport */
+    z-index: 1000;
+    margin-bottom: 20px; /* additional gap below header (for visual separation) */
+}
+  
+/* Inner header container (dock) */
+.header-container {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 1400px !important;
+    background: rgba(10, 10, 10, 0.85) !important; /* More transparent */
+    backdrop-filter: blur(8px) !important; /* Reduced blur */
+    border: 1px solid rgba(255, 255, 255, 0.03) !important; /* Lighter border */
+    border-radius: 12px !important;
+    box-shadow: 
+        0 -10px 30px rgba(0, 0, 0, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 1px rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: 7px 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background-clip: padding-box !important;
+}
+  
+/* When mobile menu is open, blur the entire dock */
+.header.menu-open .header-container {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+  
+/* Update the blur target to specific elements instead of whole container */
+.header.menu-open .header-logo,
+.header.menu-open .menu-main {
+    filter: blur(8px) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+}
+  
+/* Ensure hamburger stays clear */
+.header.menu-open .hamburger-wrapper {
+    filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+  
+/* Enhanced shadow when scrolled */
+.header.scrolled .header-container {
+    background: rgba(10, 10, 10, 0.9) !important;
+    box-shadow: 
+        0 -20px 40px rgba(0, 0, 0, 0.8),
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+  
+/* Logo (left side) */
+.header-logo {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--highlight-color);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px rgba(237,41,57,0.3);
+}
+.header-logo:hover {
+    color: #ff4444;
+    text-shadow: 0 0 12px rgba(237,41,57,0.5);
+}
+  
+/* Main Menu (links) on desktop: positioned to the right */
+.menu-main {
+    margin-right: 20px !important;
+}
+
+.menu-main ul {
+    display: flex !important;
+    gap: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+.menu-main ul li a {
+    font-family: 'Ubuntu Mono', monospace !important;
+    font-size: 0.95rem !important;
+    color: #a0a0a0 !important;
+    text-decoration: none !important;
+    position: relative !important;
+    padding: 6px 12px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    letter-spacing: 0.5px !important;
+    border: 1px solid transparent !important;
+    border-radius: 6px !important;
+    background: rgba(237, 41, 57, 0.0) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* Terminal prompt effect */
+.menu-main ul li a::before {
+    content: '>' !important;
+    color: var(--highlight-color) !important;
+    opacity: 0 !important;
+    transform: translateX(-8px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-shadow: 0 0 8px rgba(237, 41, 57, 0.3) !important;
+}
+
+/* Hover and active states */
+.menu-main ul li a:hover,
+.menu-main ul li.active a {
+    color: #ffffff !important;
+    background: rgba(237, 41, 57, 0.1) !important;
+    border-color: rgba(237, 41, 57, 0.2) !important;
+    box-shadow: 
+        0 0 20px rgba(237, 41, 57, 0.1),
+        0 0 0 1px rgba(237, 41, 57, 0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+.menu-main ul li a:hover::before,
+.menu-main ul li.active a::before {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+/* Glowing underline effect */
+.menu-main ul li a::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: -1px !important;
+    width: 0 !important;
+    height: 1px !important;
+    background: var(--highlight-color) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 
+        0 0 10px var(--highlight-color),
+        0 0 20px var(--highlight-color) !important;
+    opacity: 0 !important;
+}
+
+.menu-main ul li a:hover::after,
+.menu-main ul li.active a::after {
+    width: 100% !important;
+    opacity: 0.5 !important;
+}
+  
+/* Hamburger remains in its original location */
+.hamburger-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin-top: 4px !important; /* Added top margin to move it down */
+    transform: translateY(1px) !important; /* Fine-tune vertical position */
+}
+  
+/* Desktop vs. Mobile display */
+/* Desktop: show main menu; hide hamburger */
+@media (min-width: 1024px) {
+    .menu-main {
+        display: block;
+    }
+    .hamburger-wrapper {
+        display: none;
+    }
+}
+/* Mobile: hide main menu; show hamburger */
+@media (max-width: 1023px) {
+    .menu-main {
+        display: none;
+    }
+    .hamburger-wrapper {
+        display: block;
+    }
+}
+  
+/* Ensure page content starts below the fixed header */
+body {
+    padding-top: 100px; /* Adjust based on your header’s final height */
+}

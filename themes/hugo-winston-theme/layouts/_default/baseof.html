@@ -45,21 +45,21 @@
   {{ end }}
 
   <!-- css for custom styles -->
-  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" />
   <!-- css for table of contents -->
-  <link rel="stylesheet" href="/css/toc.css" />
+  <link rel="stylesheet" href="{{ "css/toc.css" | relURL }}" />
   <!-- css for tooltip on links -->
-  <link rel="stylesheet" href="/css/link-tooltip.css" />
+  <link rel="stylesheet" href="{{ "css/link-tooltip.css" | relURL }}" />
   <!-- css for inline code copy -->
-  <link rel="stylesheet" href="/css/inlinecode-tooltip.css" />
+  <link rel="stylesheet" href="{{ "css/inlinecode-tooltip.css" | relURL }}" />
   <!-- css for header -->
-  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="{{ "css/header.css" | relURL }}" />
   <!-- css for blockquotes -->
-  <link rel="stylesheet" href="/css/blockquote.css" />
+  <link rel="stylesheet" href="{{ "css/blockquote.css" | relURL }}" />
   <!-- css for summary blog page -->
-  <link rel="stylesheet" href="/css/summary-blog-page.css" />
+  <link rel="stylesheet" href="{{ "css/summary-blog-page.css" | relURL }}" />
   <!-- css for author -->
-  <link rel="stylesheet" href="/css/author.css" />
+  <link rel="stylesheet" href="{{ "css/author.css" | relURL }}" />
   <!-- import material icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -68,15 +68,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
   <!-- Mobile menu styles and scripts -->
-  <link rel="stylesheet" href="/css/mobile-menu.css" />
-
+  <link rel="stylesheet" href="{{ "css/mobile-menu.css" | relURL }}" />
   <!-- Add table styles -->
-  <link rel="stylesheet" href="/css/table.css" />
-
+  <link rel="stylesheet" href="{{ "css/table.css" | relURL }}" />
   <!-- Add list styles -->
-  <link rel="stylesheet" href="/css/lists.css" />
-<!-- css for footer -->
-  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="{{ "css/lists.css" | relURL }}" />
+  <!-- css for footer -->
+  <link rel="stylesheet" href="{{ "css/footer.css" | relURL }}" />
 
   {{ partial "extend-head.html" . }}
 </head>
@@ -122,24 +120,23 @@
 
   <!-- Custom scripts -->
   <!-- script for heading anchors -->
-  <script src="/js/heading-anchors.js" defer></script>
+  <script src="{{ "js/heading-anchors.js" | relURL }}" defer></script>
   <!-- script for table of contents -->
-  <script src="/js/toc.js" defer></script>
+  <script src="{{ "js/toc.js" | relURL }}" defer></script>
   <!-- script for lightbox -->
-  <script src="/js/lightbox.js" defer></script>
+  <script src="{{ "js/lightbox.js" | relURL }}" defer></script>
   <!-- script for inline code copy -->
-  <script src="/js/inline-code-copy.js" defer></script>
+  <script src="{{ "js/inline-code-copy.js" | relURL }}" defer></script>
   <!-- script for link tooltip -->
-  <script src="/js/link-tooltip.js" defer></script>
+  <script src="{{ "js/link-tooltip.js" | relURL }}" defer></script>
   <!-- script for mobile menu -->
-  <script src="/js/mobile-menu.js" defer></script>
+  <script src="{{ "js/mobile-menu.js" | relURL }}" defer></script>
   <!-- script for header -->
-  <script src="/js/header.js" defer></script>
+  <script src="{{ "js/header.js" | relURL }}" defer></script>
   <!-- script for author on home page -->
-  <script src="/js/author.js" defer></script>
-
+  <script src="{{ "js/author.js" | relURL }}" defer></script>
   <!-- Add table script -->
-  <script src="/js/table.js" defer></script>
+  <script src="{{ "js/table.js" | relURL }}" defer></script>
 
   {{ partial "google-analytics.html" . }}
   {{ partial "plausible-analytics.html" . }}

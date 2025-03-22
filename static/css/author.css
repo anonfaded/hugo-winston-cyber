@@ -21,6 +21,8 @@
   height: 50px;
   border-radius: 50%;
   border: 2px solid var(--highlight-color);
+  margin-bottom: 6px;
+  margin-top: -10%;
 }
 
 /* 🔥 Fix: Name & Typing Effect Grid */
@@ -30,6 +32,7 @@
   align-items: start;
   justify-content: start; /* Align to Left */
   width: 100%;
+  margin-top: -2%;
 }
 
 /* 🔥 Fix: Name Alignment */

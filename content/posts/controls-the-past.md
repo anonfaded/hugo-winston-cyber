@@ -1,13 +1,14 @@
 ---
-title: Who controls the past controls the future. Who controls the present controls the past
+title: Who controls the past controls the future. Who controls the present controls
+  the past
 date: 2018-06-07
-description: "Testing various Markdown elements"
+description: Testing various Markdown elements
 image: images/cctv2.jpeg
 imageAltAttribute: CCTV Camera
 tags:
-   - markdown
-   - test
-   - elements
+- markdown
+- test
+- elements
 ---
 
 # Heading 1 (H1)

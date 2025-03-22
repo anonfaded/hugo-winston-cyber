@@ -33,18 +33,21 @@ body {
     flex-shrink: 0 !important; /* Prevent footer from shrinking */
     position: relative !important; /* Changed from absolute */
     margin-top: auto !important; /* Push to bottom of available space */
-    padding: 0 15px 10px !important; /* Reduced bottom padding */
+    padding: 0 max(15px, calc((100% - 1100px) / 2)) 10px !important; /* Center align with equal spacing */
     width: 100% !important;
     box-sizing: border-box !important;
     display: flex !important;
     justify-content: center !important;
+    max-width: 1200px !important; /* Increased from default */
+    margin: 60px auto 0 !important; /* Added top margin, kept horizontal auto centering */
+    padding: 0 20px 10px !important; /* Even padding */
 }
 
 .footer-content {
     width: 100% !important;
     max-width: 1100px !important;
     margin: 0 auto !important;
-    padding: 8px 20px !important;
+    padding: 8px 15px !important; /* Equal padding on both sides */
     min-height: 44px !important; /* More compact height */
     display: flex !important;
     align-items: center !important;
@@ -55,6 +58,7 @@ body {
     border-radius: 12px !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
     gap: 0 !important; /* Remove gap */
+    padding: 8px 20px !important;
 }
 
 .footer-copyright {
@@ -71,7 +75,7 @@ body {
 .footer-social {
     display: flex !important;
     align-items: center !important;
-    gap: 3px !important; /* Minimal gap */
+    gap: 8px !important; /* Reduced from 12px for better spacing between icons */
     padding: 0 !important;
     flex-wrap: nowrap !important; /* Force single row */
     white-space: nowrap !important;
@@ -81,11 +85,16 @@ body {
 .footer-social a {
     display: flex !important;
     align-items: center !important;
-    padding: 3px !important; /* Smaller padding */
+    padding: 6px !important; /* Reduced from 8px for larger click area */
+    min-width: 32px !important; /* Ensure minimum clickable width */
+    min-height: 32px !important; /* Ensure minimum clickable height */
+    justify-content: center !important; /* Center icon in the larger clickable area */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     gap: 8px !important;
     color: var(--text-color) !important;
     text-decoration: none !important;
+    touch-action: manipulation; /* Improves tap response */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 .footer-social a:hover {
@@ -105,8 +114,8 @@ body {
 
 /* Fix SVG icon colors */
 .footer-social svg {
-    width: 15px !important;
-    height: 15px !important;
+    width: 20px !important;     /* Increased size */
+    height: 20px !important;    /* Increased size */
     fill: var(--text-color) !important;
     opacity: 0.8 !important;
     transition: all 0.3s ease !important;
@@ -117,6 +126,15 @@ body {
     fill: #ffffff !important;
     transform: translateY(-2px) !important;
     opacity: 1 !important;
+}
+
+/* Ensure hover state is applied on first tap for touch devices */
+.footer-social a:active,
+.footer-social a:focus {
+    transition: none !important; /* Remove transition to prevent shake */
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
 }
 
 /* GitHub badge specific styling */
@@ -131,6 +149,7 @@ body {
     height: 18px !important;
     width: auto !important;
     min-width: unset !important; /* Remove forced width */
+    pointer-events: none !important; /* Prevent clicking on the image itself */
 }
 
 .github-stats {
@@ -152,8 +171,11 @@ body {
     .footer {
         width: calc(100% - 24px) !important; /* Consistent spacing */
         bottom: 15px !important; /* Slightly closer on mobile */
-        padding: 0 12px !important; /* Even padding on both sides */
+        padding: 0 15px 10px !important; /* Equal padding on mobile */
         padding-bottom: 8px !important;
+        padding: 0 15px 10px !important;
+        width: calc(100% - 30px) !important; /* Account for padding */
+        margin: 40px auto 0 !important; /* Slightly less margin on mobile */
     }
 
     .footer-content {
@@ -169,7 +191,7 @@ body {
         display: flex !important; /* Override previous grid */
         flex-direction: row !important; /* Force row */
         flex-wrap: nowrap !important;
-        gap: 8px !important;
+        gap: 10px !important; /* Reduced from 16px */
         justify-content: center !important; /* Center all items */
         align-items: center !important;
         width: auto !important; /* Don't force full width */
@@ -177,12 +199,12 @@ body {
     }
 
     .footer-social a {
-        padding: 2px !important;
+        padding: 8px !important; /* Reduced from 10px */
     }
 
     .footer-social svg {
-        width: 14px !important; /* Smaller icons */
-        height: 14px !important;
+        width: 20px !important;     /* Increased size */
+        height: 20px !important;    /* Increased size */
     }
 
     .github-stats {
@@ -236,8 +258,8 @@ body {
     }
 
     .footer-social svg {
-        width: 14px !important; /* Slightly smaller icons */
-        height: 14px !important;
+        width: 20px !important;     /* Increased size */
+        height: 20px !important;    /* Increased size */
     }
 
     .github-stars img {
@@ -259,7 +281,7 @@ body {
 /* Footer social icons */
 .footer-social {
     display: flex !important;
-    gap: 4px !important;
+    gap: 8px !important; /* Reduced from 12px */
     justify-content: center !important;
     margin-bottom: 0 !important; /* Remove bottom margin */
     align-items: center !important;
@@ -268,6 +290,12 @@ body {
 .footer-social a {
     color: rgba(255, 255, 255, 0.7) !important; /* White with opacity */
     transition: all 0.3s ease !important;
+    touch-action: manipulation; /* Improves tap response */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    padding: 6px !important; /* Reduced from 8px for larger click area */
+    min-width: 32px !important; /* Ensure minimum clickable width */
+    min-height: 32px !important; /* Ensure minimum clickable height */
+    justify-content: center !important; /* Center icon in the larger clickable area */
 }
   
 .footer-social a:hover {

@@ -1,7 +1,7 @@
 # Blog Theme Documentation
 
 ## Overview
-A customized Hugo blog theme with dark mode and enhanced code block styling. Built on top of the Hugo Winston theme with significant UI/UX improvements and modern design elements. 
+A customized Hugo blog theme with dark mode and enhanced code block styling. Built on top of the Hugo Winston theme with significant UI/UX improvements and modern design elements.
 
 ## Features
 

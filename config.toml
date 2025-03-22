@@ -1,4 +1,4 @@
-baseURL = "https://anonfaded.github.io/"
+baseURL = "https://anonfaded.github.io/hugo-winston-cyber/"
 languageCode = "en-us"
 theme = "hugo-winston-theme"
 themesDir = "themes"

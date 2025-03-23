@@ -3,7 +3,10 @@ languageCode = "en-us"
 theme = "hugo-winston-theme"
 themesDir = "themes"
 title = "// F4dS3c Blog"
-paginate = 3
+
+[pagination]
+pagerSize = 3
+
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses = true

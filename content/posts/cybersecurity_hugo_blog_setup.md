@@ -94,7 +94,7 @@ Then, visit the **localhost link** provided in the terminal to preview live chan
 1. Design a custom **Open Graph (OG) image** (800x420px recommended).
 2. Replace the existing one at `static/images/og-image-webp.webp`, and remember to name it exactly as `og-image-webp.webp`
 3. A free **Photoshop PSD template** is available at `static/psd/og-image.psd`, which you can customize for yourself by replacing the placeholder text.
-4. If you don’t have Photoshop (even if you have), use [Photopea](https://photopea.com) instead, a free online alternative which have all the features of Photoshop, and also it's online browser based, without the need to download anything. (This default template was designed using Photopea as well)
+4. If you don’t have Photoshop (even if you have), use [Photopea](https://photopea.com) instead, a free online alternative that has all the features of Photoshop. It is also browser-based, so there’s no need to download anything. (This default template was designed using Photopea as well.)
 
 ---
 

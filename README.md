@@ -8,10 +8,14 @@ A **highly customized** Hugo theme for **cybersecurity enthusiasts**, forked fro
 🔹 **Easy GitHub Pages deployment**  
 🔹 **Minimal setup, fully customizable**  
 
-Visit the website and learn how to set up this theme:
-👉 **[Live Demo & Setup Guide](https://blog.fadedhood.com/posts/cybersecurity_hugo_blog_setup/)**
+## Visit the website and learn how to set up this theme:
+👉 **[Live Demo & Setup Guide](https://blog.fadedhood.com/posts/cybersecurity_hugo_blog_setup/)** 
+or 
+[Demo 2](https://anonfaded.github.io/hugo-winston-cyber/posts/cybersecurity_hugo_blog_setup/)
 
 🚀 Get your cyber blog live in minutes! 🛡️  
+
+## Contributions
 
 If you like this project, consider starring or sponsoring it on GitHub: [GitHub Repository](https://github.com/anonfaded/hugo-winston-cyber).
 

@@ -1,5 +1,6 @@
 
 # 🚀 Cybersecurity-Themed Hugo Blog Template  
+![image](https://github.com/user-attachments/assets/41b460ad-fc3b-4599-a35e-0c866c9744c8)
 
 A **highly customized** Hugo theme for **cybersecurity enthusiasts**, forked from [hugo-winston-theme](https://github.com/zerostaticthemes/hugo-winston-theme). This **ready-to-use** template requires minimal setup and is perfect for security bloggers.  
 

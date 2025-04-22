@@ -35,6 +35,20 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color) !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+/* Ensure consecutive headers have proper spacing */
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: 1.5rem;
 }
 
 /* Commented out frame border - was too decorative */

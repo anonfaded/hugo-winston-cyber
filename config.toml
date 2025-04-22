@@ -56,7 +56,7 @@ pygmentsUseClasses = true
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      hardWraps = false
+      hardWraps = true
       unsafe = true
       xhtml = false
 
@@ -67,7 +67,7 @@ pygmentsUseClasses = true
     url = '/'
     weight = 1
   [[menu.main]]
-    name = "Blog"
+    name = "Posts"
     identifier = "blog"
     weight = 2
     url = "/posts/"
